@@ -3,7 +3,6 @@ package javafx;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +21,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -58,6 +56,7 @@ public class SampleController implements Initializable {
     
     private ArrayList<Army> myarmy = new ArrayList<>();
     private final ObservableList<String> listItems = FXCollections.observableArrayList(); 
+    //private final ObservableList<TableData> data = FXCollections.observableArrayList();
                    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -159,14 +158,12 @@ public class SampleController implements Initializable {
                     display_army_color.setVisible(true);
                     display_army_color.setFill(Paint.valueOf(a.army_color));
                     
-                    /*
                     ObservableList data = FXCollections.observableArrayList(a.actor);
-                    
                     
                     for(int i = 0; i<a.actor.size();i++){   
                        data.add(new TableData(a.actor.get(i).aName, a.actor.get(i).aStrength.toString(), a.actor.get(i).aSpeed.toString(), a.actor.get(i).aHealth.toString(), "test", "test2", "test3", "test4"));
                     }
-                    
+                    /*
                     Name.setCellValueFactory(new PropertyValueFactory<TableData,String>("one"));
                     Strength.setCellValueFactory(new PropertyValueFactory<TableData,String>("two"));
                     Speed.setCellValueFactory(new PropertyValueFactory<TableData,String>("three"));
@@ -175,12 +172,11 @@ public class SampleController implements Initializable {
                     xtra2.setCellValueFactory(new PropertyValueFactory<TableData,String>("six"));
                     xtra3.setCellValueFactory(new PropertyValueFactory<TableData,String>("seven"));
                     xtra4.setCellValueFactory(new PropertyValueFactory<TableData,String>("eight"));
-                    
-                    
+                    */
                     System.out.println(data);
                     army.setItems(data);
                     army.getColumns().addAll(Name, Strength, Speed, Health, xtra1, xtra2, xtra3, xtra4);
-                    */
+                    
                 }
             }
         });  
