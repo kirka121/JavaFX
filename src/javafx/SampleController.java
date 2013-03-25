@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -49,15 +50,15 @@ public class SampleController implements Initializable {
     @FXML
     private Circle display_army_color;
     @FXML 
-    private TableColumn ID,Type,Name,Health,Strength,Speed;
+    private TableColumn Name,Health,Strength,Speed,xtra1,xtra2,xtra3,xtra4;
     @FXML
     private TableView army;
     @FXML
     private TableCell somesell;
     
     private ArrayList<Army> myarmy = new ArrayList<>();
-    final ObservableList<String> listItems = FXCollections.observableArrayList(); 
-    
+    private final ObservableList<String> listItems = FXCollections.observableArrayList(); 
+                   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         assert new_army != null : "fx:id=\"myButton\" was not injected: check your FXML file 'simple.fxml'.";
@@ -159,13 +160,26 @@ public class SampleController implements Initializable {
                     display_army_color.setFill(Paint.valueOf(a.army_color));
                     
                     /*
-                    for(int i = 1; i<=a.actor.size();i++){
-                        ID.setText(a.actor.get(i).aSequence.toString());
-                        Name.setText(a.actor.get(i).aName);
-                        Health.setText(a.actor.get(i).aHealth.toString());
-                        Strength.setText(a.actor.get(i).aStrength.toString());
-                        Speed.setText(a.actor.get(i).aSpeed.toString());
+                    ObservableList data = FXCollections.observableArrayList(a.actor);
+                    
+                    
+                    for(int i = 0; i<a.actor.size();i++){   
+                       data.add(new TableData(a.actor.get(i).aName, a.actor.get(i).aStrength.toString(), a.actor.get(i).aSpeed.toString(), a.actor.get(i).aHealth.toString(), "test", "test2", "test3", "test4"));
                     }
+                    
+                    Name.setCellValueFactory(new PropertyValueFactory<TableData,String>("one"));
+                    Strength.setCellValueFactory(new PropertyValueFactory<TableData,String>("two"));
+                    Speed.setCellValueFactory(new PropertyValueFactory<TableData,String>("three"));
+                    Health.setCellValueFactory(new PropertyValueFactory<TableData,String>("four"));
+                    xtra1.setCellValueFactory(new PropertyValueFactory<TableData,String>("five"));
+                    xtra2.setCellValueFactory(new PropertyValueFactory<TableData,String>("six"));
+                    xtra3.setCellValueFactory(new PropertyValueFactory<TableData,String>("seven"));
+                    xtra4.setCellValueFactory(new PropertyValueFactory<TableData,String>("eight"));
+                    
+                    
+                    System.out.println(data);
+                    army.setItems(data);
+                    army.getColumns().addAll(Name, Strength, Speed, Health, xtra1, xtra2, xtra3, xtra4);
                     */
                 }
             }
@@ -177,6 +191,8 @@ public class SampleController implements Initializable {
 /* TO DO
  * - load armies into table when selected on left sidebar
  * - load armies into battlefield, only 2 at a time
+ * - depending on actor type inside of army, shows different fields for extra rows in table
+ * - show number of actors in army, next to color and name
  * - add code to account for X,Y coords of actors
  * - add code to account for different movement types of actors
  * - allow to edit armies

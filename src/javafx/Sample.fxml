@@ -31,16 +31,14 @@
                   <children>
                     <TableView id="table" fx:id="army" prefHeight="139.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
                       <columns>
-                        <TableColumn prefWidth="20.0" text="ID" />
-                        <TableColumn prefWidth="75.0" text="Type" />
-                        <TableColumn prefWidth="75.0" text="Name" />
-                        <TableColumn prefWidth="50.0" text="Health" />
-                        <TableColumn prefWidth="50.0" text="Strength" />
-                        <TableColumn prefWidth="50.0" text="Speed" />
-                        <TableColumn prefWidth="50.0" text="xtra1" />
-                        <TableColumn prefWidth="50.0" text="xtra2" />
-                        <TableColumn prefWidth="50.0" text="xtra3" />
-                        <TableColumn prefWidth="50.0" text="xtra4" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="Name" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="Strength" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="Speed" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="Health" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="xtra1" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="xtra2" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="xtra3" />
+                        <TableColumn prefWidth="75.0" resizable="false" text="xtra4" />
                       </columns>
                     </TableView>
                     <Label fx:id="army_name" layoutX="69.0" layoutY="7.0" prefWidth="156.0" />
