@@ -195,14 +195,12 @@ public class SampleController implements Initializable {
 
 /* TO DO
  * - change actor properties to simplify some of the communication pads for the tableview -> listener
- * - load armies into table when selected on left sidebar
- * - make the setCellValueFactory to 2 lines and inspect
+ * - allow to edit armies in the table
  * - load armies into battlefield, only 2 at a time
  * - depending on actor type inside of army, shows different fields for extra rows in table
  * - show number of actors in army, next to color and name
  * - add code to account for X,Y coords of actors
  * - add code to account for different movement types of actors
- * - allow to edit armies
  * - save armies to hard disk
  * - load armies from hard disk
  * - battle the armies
