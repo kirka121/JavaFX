@@ -29,18 +29,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                   <children>
-                    <TableView id="table" fx:id="army" prefHeight="139.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
-                      <columns>
-                        <TableColumn prefWidth="75.0" resizable="false" text="Name" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="Strength" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="Speed" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="Health" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="xtra1" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="xtra2" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="xtra3" />
-                        <TableColumn prefWidth="75.0" resizable="false" text="xtra4" />
-                      </columns>
-                    </TableView>
+                    <TableView id="table" fx:id="army" editable="true" prefHeight="139.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
                     <Label fx:id="army_name" layoutX="69.0" layoutY="7.0" prefWidth="156.0" />
                     <Label layoutX="14.0" layoutY="7.0" text="Army:" />
                     <Label layoutX="199.0" layoutY="7.0" text="Color:" />

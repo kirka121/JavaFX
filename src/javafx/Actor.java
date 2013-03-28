@@ -27,7 +27,7 @@ public abstract class Actor{
 	}
 	private Integer getSpeed(){
 		Integer speed;
-		speed = Input.referenceToSingleInputObject.getInt("Please enter your speed", 1, 10);
+		speed = (Integer)Input.referenceToSingleInputObject.getInt("Please enter your speed", 1, 10);
 		return speed;
 	}
 	private Integer getHealth(){

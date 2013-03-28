@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -47,16 +48,16 @@ public class SampleController implements Initializable {
     private TextField army_name_entry, specific_creature_amount;
     @FXML
     private Circle display_army_color;
-    @FXML 
-    private TableColumn Name,Health,Strength,Speed,xtra1,xtra2,xtra3,xtra4;
     @FXML
     private TableView army;
-    @FXML
-    private TableCell somesell;
     
     private ArrayList<Army> myarmy = new ArrayList<>();
     private final ObservableList<String> listItems = FXCollections.observableArrayList(); 
-    //private final ObservableList<TableData> data = FXCollections.observableArrayList();
+    private final ObservableList<TableData> data = FXCollections.observableArrayList();
+    TableColumn name = new TableColumn();
+    TableColumn strength = new TableColumn();
+    TableColumn speed = new TableColumn();
+    TableColumn health = new TableColumn();
                    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -152,31 +153,39 @@ public class SampleController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(list_armies.isFocused()){
+                    
+                            
                     int selectedItem = list_armies.getSelectionModel().getSelectedIndex();
                     Army a = myarmy.get(selectedItem);
                     army_name.setText(a.name_of_army);
                     display_army_color.setVisible(true);
                     display_army_color.setFill(Paint.valueOf(a.army_color));
                     
-                    ObservableList data = FXCollections.observableArrayList(a.actor);
-                    
-                    for(int i = 0; i<a.actor.size();i++){   
-                       data.add(new TableData(a.actor.get(i).aName, a.actor.get(i).aStrength.toString(), a.actor.get(i).aSpeed.toString(), a.actor.get(i).aHealth.toString(), "test", "test2", "test3", "test4"));
+                    army.setItems(null);
+                    army.getColumns().removeAll(name,strength,speed,health);
+                    for(int i = 0; i<data.size();i++){
+                        data.remove(i);
                     }
-                    /*
-                    Name.setCellValueFactory(new PropertyValueFactory<TableData,String>("one"));
-                    Strength.setCellValueFactory(new PropertyValueFactory<TableData,String>("two"));
-                    Speed.setCellValueFactory(new PropertyValueFactory<TableData,String>("three"));
-                    Health.setCellValueFactory(new PropertyValueFactory<TableData,String>("four"));
-                    xtra1.setCellValueFactory(new PropertyValueFactory<TableData,String>("five"));
-                    xtra2.setCellValueFactory(new PropertyValueFactory<TableData,String>("six"));
-                    xtra3.setCellValueFactory(new PropertyValueFactory<TableData,String>("seven"));
-                    xtra4.setCellValueFactory(new PropertyValueFactory<TableData,String>("eight"));
-                    */
-                    System.out.println(data);
-                    army.setItems(data);
-                    army.getColumns().addAll(Name, Strength, Speed, Health, xtra1, xtra2, xtra3, xtra4);
+                    for(int i = 0; i<a.actor.size();i++){   
+                       data.add(new TableData(a.actor.get(i).aName, a.actor.get(i).aStrength.toString(), a.actor.get(i).aSpeed.toString(), a.actor.get(i).aHealth.toString()));
+                    }
                     
+                    name.setText("Name");
+                    name.setMinWidth(80);
+                    strength.setText("Strength");
+                    strength.setMinWidth(80);
+                    speed.setText("Speed");
+                    speed.setMinWidth(80);
+                    health.setText("Health");
+                    health.setMinWidth(80);
+                    
+                    name.setCellValueFactory(new PropertyValueFactory("one"));
+                    strength.setCellValueFactory(new PropertyValueFactory("two"));
+                    speed.setCellValueFactory(new PropertyValueFactory("three"));
+                    health.setCellValueFactory(new PropertyValueFactory("four"));
+                   
+                    army.setItems(data);
+                    army.getColumns().addAll(name, strength, speed, health);
                 }
             }
         });  
@@ -185,7 +194,9 @@ public class SampleController implements Initializable {
 
 
 /* TO DO
+ * - change actor properties to simplify some of the communication pads for the tableview -> listener
  * - load armies into table when selected on left sidebar
+ * - make the setCellValueFactory to 2 lines and inspect
  * - load armies into battlefield, only 2 at a time
  * - depending on actor type inside of army, shows different fields for extra rows in table
  * - show number of actors in army, next to color and name
