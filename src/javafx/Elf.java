@@ -12,6 +12,8 @@ public class Elf extends Actor{
 	//overwriten constructor
 	public Elf(Integer sequence){
 		super(sequence);
+        super.point_x = (int)SingletonRandom.instance.getNormalDistribution(302.0,596.0,4.0);
+        super.point_y = (int)SingletonRandom.instance.getNormalDistribution(0.0,116.0,4.0);
 	}
 
 	//add to set funtionalit of super class

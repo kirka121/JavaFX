@@ -2,12 +2,12 @@ package javafx;
 
 import java.util.ArrayList;
 
-public class Army{
+public class Army implements java.io.Serializable{
 	public ArrayList<Actor> actor;	// holds our actors
-	private Integer type_of_actor;	//holds the type of actor  7 - mixed,
-	private Integer num_of_actors;	//holds the number of actors to create
+	public Integer type_of_actor;	//holds the type of actor  7 - mixed,
+	public Integer num_of_actors;	//holds the number of actors to create
 	public String name_of_army; 	//holds the name of this army
-        public String army_color;      //holds the color of our army
+    public String army_color;      //holds the color of our army
 	private ArmyDisplay show_army = new ArmyDisplay();
 
 	//no arguments constructor. asks what you would like to do.

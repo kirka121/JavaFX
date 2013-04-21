@@ -1,12 +1,14 @@
 package javafx;
 
-public abstract class Actor{
+public abstract class Actor implements java.io.Serializable{
 
 	public String aName;
 	public Integer aStrength;
 	public Integer aSpeed;
 	public Integer aHealth;
-	public static Integer aSequence = 0;	
+	public Integer aSequence = 0;
+    public Integer point_x;
+    public Integer point_y;
 
 	public Actor(){}
 	//constructor, takes care of the sequence number for this actor

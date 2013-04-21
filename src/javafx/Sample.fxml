@@ -16,30 +16,42 @@
         <Image url="@../images/header.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <SplitPane dividerPositions="0.14769647696476965" focusTraversable="true" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+    <SplitPane dividerPositions="0.14634146341463414" focusTraversable="true" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
       <items>
         <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" prefHeight="398.0" prefWidth="113.0">
           <children>
             <ListView id="tree" fx:id="list_armies" prefHeight="501.9999000000025" prefWidth="106.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="load_a_from_disk" layoutX="7.0" layoutY="478.0" mnemonicParsing="false" text="Load from Disk" />
+            <Button fx:id="save_a_to_disk" layoutX="7.0" layoutY="454.0" mnemonicParsing="false" prefWidth="92.0" text="Save to Disk" visible="false" />
+            <Label fx:id="labl_chose_a_file" layoutX="7.0" layoutY="453.0" text="file:" visible="false" />
+            <TextField fx:id="chose_a_file" layoutX="26.0" layoutY="450.0" prefWidth="70.0" visible="false" />
+            <Button id="actually_load" fx:id="actually_load" layoutX="7.0" layoutY="478.0" mnemonicParsing="false" prefWidth="92.0" text="Load" visible="false" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="437.0">
           <children>
-            <SplitPane dividerPositions="0.34" focusTraversable="true" orientation="VERTICAL" prefHeight="398.0" prefWidth="461.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.434" focusTraversable="true" orientation="VERTICAL" prefHeight="502.0" prefWidth="626.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                   <children>
                     <TableView id="table" fx:id="army" editable="true" prefHeight="139.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
-                    <Label fx:id="army_name" layoutX="69.0" layoutY="7.0" prefWidth="156.0" />
+                    <Label fx:id="army_name" layoutX="44.0" layoutY="7.0" prefWidth="70.0" />
                     <Label layoutX="14.0" layoutY="7.0" text="Army:" />
-                    <Label layoutX="199.0" layoutY="7.0" text="Color:" />
-                    <Circle fx:id="display_army_color" fill="DODGERBLUE" layoutX="244.0" layoutY="14.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                    <Label layoutX="134.0" layoutY="7.0" text="Color:" />
+                    <Circle fx:id="display_army_color" fill="DODGERBLUE" layoutX="170.0" layoutY="15.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                    <Label fx:id="label_s_f_army" layoutX="257.0" layoutY="7.0" text="Size:" />
+                    <Label id="actual" fx:id="label_s_f_army" layoutX="281.0" layoutY="7.0" prefWidth="30.0" />
                   </children>
                 </AnchorPane>
-                <AnchorPane fx:id="details" minHeight="0.0" minWidth="0.0" prefHeight="315.0" prefWidth="624.0" visible="false">
+                <AnchorPane fx:id="details" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="624.0">
                   <children>
-                    <Label layoutX="15.0" layoutY="14.0" text="BattleField:" />
-                    <Pane fx:id="battlefield" layoutX="15.0" layoutY="28.0" mouseTransparent="true" prefHeight="287.0" prefWidth="598.0" />
+                    <Pane fx:id="battlefield" layoutX="12.0" layoutY="28.0" prefHeight="238.0" prefWidth="598.0" />
+                    <Label fx:id="label_vs" layoutX="101.0" layoutY="2.0" prefHeight="19.0" prefWidth="14.0001220703125" text="vs." visible="false" />
+                    <Label fx:id="label_army1" layoutX="33.0" layoutY="5.0" prefWidth="70.0" />
+                    <Label fx:id="label_army2" layoutX="155.0" layoutY="5.0" prefWidth="74.0" />
+                    <Button fx:id="start_fight" layoutX="534.0" layoutY="2.0" mnemonicParsing="false" prefWidth="70.0" text="Fight" visible="false" />
+                    <Circle fx:id="circle_army1" fill="DODGERBLUE" layoutX="23.0" layoutY="12.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                    <Circle fx:id="circle_army2" fill="DODGERBLUE" layoutX="144.0" layoutY="12.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                   </children>
                 </AnchorPane>
               </items>

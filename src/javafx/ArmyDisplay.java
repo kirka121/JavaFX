@@ -2,7 +2,7 @@ package javafx;
 
 import java.lang.*;
 
-class ArmyDisplay{
+class ArmyDisplay implements java.io.Serializable{
 	//draws the title, centers everything inside a box
 	public static String draw_title(String army_title, String army_size, String army_type, String average_strength, Integer width, Integer height, String border){
 		String Header_array = border; 

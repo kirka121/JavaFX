@@ -13,6 +13,8 @@ public class Human extends Actor{
 	//overwriten constructor
 	public Human(Integer sequence){
 		super(sequence);
+        super.point_x = (int)SingletonRandom.instance.getNormalDistribution(1.0,299.0,4.0);
+        super.point_y = (int)SingletonRandom.instance.getNormalDistribution(1.0,119.0,4.0);
 	}
 
 	//add to set funtionalit of super class

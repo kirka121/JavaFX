@@ -11,6 +11,8 @@ public class Wizard extends Actor{
 	//overwritten constructor
 	public Wizard(Integer sequence){
 		super(sequence);
+        super.point_x = (int)SingletonRandom.instance.getNormalDistribution(301.0,596.0,4.0);
+        super.point_y = (int)SingletonRandom.instance.getNormalDistribution(120.0,236.0,4.0);
 	}
 
 	//add to set funtionalit of super class
