@@ -409,7 +409,6 @@ public class SampleController implements Initializable {
  */
 
 /* BUGS:
- * - when loading armies from disk, re-creates the army instead of loading it
  * - can load army when none is selected
  * - can delete army when it is in battlefield
  * - can battle empty armies
