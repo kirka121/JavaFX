@@ -10,6 +10,7 @@ public class Hobbit extends Actor{
 	//overwriten constructor
 	public Hobbit(Integer sequence){
 		super(sequence);
+        super.a_class = 1;
         super.point_x = (int)SingletonRandom.instance.getNormalDistribution(1.0,299.0,4.0);
         super.point_y = (int)SingletonRandom.instance.getNormalDistribution(121.0,236.0,4.0);
 	}

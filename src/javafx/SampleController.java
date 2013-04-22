@@ -11,8 +11,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -40,6 +44,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 
 public class SampleController implements Initializable {
@@ -197,7 +202,44 @@ public class SampleController implements Initializable {
                     first_army_circles[i].setCenterY(first_army.actor.get(i).point_y);
                     first_army_circles[i].setRadius(5.0f);
                     first_army_circles[i].setFill(Paint.valueOf(first_army.army_color));
+                    
+                    
+                    Timeline timeline = new Timeline();
+                    timeline.setCycleCount(Timeline.INDEFINITE);
+                    timeline.setAutoReverse(false);
+                    
+                    int p_x1 = first_army.actor.get(i).point_x;
+                    int p_y1 = first_army.actor.get(i).point_y;
+                    
+                    int speed_offset = (first_army.actor.get(i).aSpeed)*3000;
+                    int closest_distance = 999;
+                    int closest_x=0;
+                    int closest_y=0;
+                    int closest_unit_index=0;
+                    
+                    for (int k = 0; k<second_army.actor.size();k++){
+                        int p_x2 = second_army.actor.get(k).point_x;
+                        int p_y2 = second_army.actor.get(k).point_y;
+                        if ((Math.abs(p_x2 - p_x1) + Math.abs(p_y2 - p_y1)) < closest_distance){
+                            closest_distance = (p_x2 - p_x1)+(p_y2 - p_y1);
+                            closest_unit_index = k;
+                            closest_x = p_x2 - p_x1;
+                            closest_y = p_y2 - p_y1;
+                        }
+                        k +=1;
+                    }
+
+                    timeline.getKeyFrames().addAll(
+                        new KeyFrame(new Duration(speed_offset), new KeyValue(first_army_circles[i].translateXProperty(), closest_x/2)),
+                        new KeyFrame(new Duration(speed_offset), new KeyValue(first_army_circles[i].translateYProperty(), closest_y/2))
+                    );
+                    
                     battlefield.getChildren().addAll(first_army_circles[i]);
+                    timeline.play();
+                    if (first_army.actor.get(i).point_x == second_army.actor.get(closest_unit_index).point_x){
+                        timeline.stop();
+                    }
+                    
                 }
                 for (int i = 0; i < second_army.actor.size(); i++){
                     second_army_circles[i] = new Circle();
@@ -205,8 +247,45 @@ public class SampleController implements Initializable {
                     second_army_circles[i].setCenterY(first_army.actor.get(i).point_y);
                     second_army_circles[i].setRadius(5.0f);
                     second_army_circles[i].setFill(Paint.valueOf(second_army.army_color));
+                    
+                    Timeline timeline = new Timeline();
+                    timeline.setCycleCount(Timeline.INDEFINITE);
+                    timeline.setAutoReverse(false);
+                    
+                    int p_x1 = second_army.actor.get(i).point_x;
+                    int p_y1 = second_army.actor.get(i).point_y;
+                    
+                    int speed_offset = (first_army.actor.get(i).aSpeed)*3000;
+                    int closest_distance = 999;
+                    int closest_x=0;
+                    int closest_y=0;
+                    int closest_unit_index=0;
+                    
+                    for (int k = 0; k<first_army.actor.size();k++){
+                        int p_x2 = first_army.actor.get(k).point_x;
+                        int p_y2 = first_army.actor.get(k).point_y;
+                        closest_unit_index = k;
+                        if ((Math.abs(p_x2 - p_x1) + Math.abs(p_y2 - p_y1)) < closest_distance){
+                            closest_distance = (p_x2 - p_x1)+(p_y2 - p_y1);
+                            closest_x = p_x2 - p_x1;
+                            closest_y = p_y2 - p_y1;
+                        }
+                        k +=1;
+                    }
+                    
+                    timeline.getKeyFrames().addAll(
+                        new KeyFrame(new Duration(speed_offset), new KeyValue(second_army_circles[i].translateXProperty(), closest_x/2)),
+                        new KeyFrame(new Duration(speed_offset), new KeyValue(second_army_circles[i].translateYProperty(), closest_y/2))
+                    );
+                    
                     battlefield.getChildren().addAll(second_army_circles[i]);
+                    timeline.play();
+                    
+                    if (second_army.actor.get(i).point_x == first_army.actor.get(closest_unit_index).point_x){
+                        timeline.stop();
+                    }
                 }
+                
             }
         });
         delete_army.setOnAction(new EventHandler<ActionEvent>() {

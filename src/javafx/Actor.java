@@ -9,6 +9,7 @@ public abstract class Actor implements java.io.Serializable{
 	public Integer aSequence = 0;
     public Integer point_x;
     public Integer point_y;
+    public Integer a_class;
 
 	public Actor(){}
 	//constructor, takes care of the sequence number for this actor
