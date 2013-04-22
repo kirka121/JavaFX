@@ -413,4 +413,7 @@ public class SampleController implements Initializable {
  * - can delete army when it is in battlefield
  * - can battle empty armies
  * - documentation is missing
+ * - title
+ * - nullpointer exception when edited parameters in army(with a mistake) and then switched armies. tableview info doesnt load anymore
+ * - nullpointer exception when trying to load from disk an innapropriate disk
  */
